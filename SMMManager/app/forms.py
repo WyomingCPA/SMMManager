@@ -16,4 +16,4 @@ class BootstrapAuthenticationForm(AuthenticationForm):
                                widget=forms.PasswordInput({
                                    'class': 'form-control',
                                    'placeholder':'Password'}))
- #test git 06:49
+ #test git 14:27
