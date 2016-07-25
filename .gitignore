@@ -248,3 +248,4 @@ ModelManifest.xml
 *.sqlite3
 *.sln
 env
+settings.py
