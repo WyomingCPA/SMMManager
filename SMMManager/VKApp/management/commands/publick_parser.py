@@ -15,7 +15,7 @@ class Command(BaseCommand):
             self.getPostParser(item.idGroup, item.category)
       
     def getPostParser(self, idGroup, category):
-         login, password = '+79210788944', '!@#Qwerty8344qwerty'
+         login, password = '+79210788944', ''
          vk_session = vk_api.VkApi(login, password, app_id = 4985624)
 
          try:
