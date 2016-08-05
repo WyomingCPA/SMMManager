@@ -28,9 +28,8 @@ class Command(BaseCommand):
 
          wall = tools.get_all('wall.get', 100, {'owner_id': idGroup}, limit=100)
          for item in wall['items']:
-             user = User.objects.get(pk = 1)
              try:
-                 post = Post(category = category, text = str(item['text']), attachments = item['attachments'], user = user)
+                 post = Post(category = category, text = str(item['text']), attachments = item['attachments'],)
                  post.save()
              except:
                  pass
