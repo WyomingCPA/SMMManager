@@ -14,8 +14,6 @@ import os
 import posixpath
 import datetime
 
-
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -46,8 +44,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'Notan1310@gmail.com'
 EMAIL_HOST_PASSWORD = ''
-
-
 
 
 # Application definition
@@ -132,7 +128,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'SMMManager',
         'USER': 'wyomingcpa',
-        'PASSWORD': '',
+        'PASSWORD': '83448344f',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }

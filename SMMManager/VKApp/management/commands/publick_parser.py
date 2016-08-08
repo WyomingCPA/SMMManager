@@ -15,23 +15,26 @@ class Command(BaseCommand):
             self.getPostParser(item.idGroup, item.category)
       
     def getPostParser(self, idGroup, category):
-         login, password = '+79210788944', ''
-         vk_session = vk_api.VkApi(login, password, app_id = 4985624)
+        login, password = '+79210788944', ''
+        vk_session = vk_api.VkApi(login, password, app_id = 4985624)
 
-         try:
-             vk_session.authorization()
-         except vk_api.AuthorizationError as error_msg:
-             print(error_msg)
-             return
+        try:
+            vk_session.authorization()
+        except vk_api.AuthorizationError as error_msg:
+            print(error_msg)
+            return
 
-         tools = vk_api.VkTools(vk_session)
+        tools = vk_api.VkTools(vk_session)
 
-         wall = tools.get_all('wall.get', 100, {'owner_id': idGroup}, limit=100)
-         for item in wall['items']:
-             try:
-                 post = Post(category = category, text = str(item['text']), attachments = item['attachments'],)
-                 post.save()
-             except:
-                 pass
+        wall = tools.get_all('wall.get', 25, {'owner_id': idGroup}, limit=100)
+        for item in wall['items']:
+            try:
+                photoList = []      
+                for item_photo_at in item['attachments']:
+                    photoList.append(item_photo_at['photo']['photo_604'])
+                post = Post(category = category, text = item['text'], photo = photoList,)
+                post.save()
+            except:
+                pass
 
 

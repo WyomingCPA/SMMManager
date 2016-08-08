@@ -12,7 +12,7 @@ class Category(models.Model):
 class Post(models.Model):
     category = models.ForeignKey(Category)
     text = models.CharField(max_length=2000)
-    attachments =  models.TextField()
+    photo =  models.TextField()
     time_parsing = models.DateField(auto_now = True)
 
     def __unicode__(self):
