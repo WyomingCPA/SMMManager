@@ -1,4 +1,4 @@
-from .models import Post, Category, PublicPost
+from .models import Post, Category, PublicPost, AdvertisingPost
 from django.contrib.auth.models import User
 
 from rest_framework import serializers
@@ -6,8 +6,7 @@ from rest_framework import serializers
 class PostItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        #'attachments',
-        fields = ('id', 'text', 'attachments', 'time_parsing', 'category')
+        fields = ('id', 'text', 'photo', 'time_parsing', 'category')
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -18,3 +17,6 @@ class PublicPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = PublicPost
         
+class AdvertisingPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AdvertisingPost

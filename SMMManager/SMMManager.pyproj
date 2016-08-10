@@ -63,6 +63,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="VKApp\tests.py" />
+    <Compile Include="VKApp\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="VKApp\views.py" />
     <Compile Include="VKApp\__init__.py" />
   </ItemGroup>

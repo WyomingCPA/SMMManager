@@ -6,9 +6,9 @@ from rest_framework import viewsets, generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from serializers import PostItemSerializer, CategorySerializer, PublicPostSerializer
+from serializers import PostItemSerializer, CategorySerializer, PublicPostSerializer, AdvertisingPostSerializer
 from datetime import datetime    
-from .models import Post, Category, PublicPost
+from .models import Post, Category, PublicPost, AdvertisingPost
 from accounts.models import CustomProfile
 
 
@@ -21,7 +21,9 @@ class PostView(viewsets.ModelViewSet):
         category_id = self.request.GET['category'] 
         category=Category.objects.get(id = category_id)
         public_post = PublicPost.objects.filter(user=self.request.user).values('post_publick')
+        advert_post = AdvertisingPost.objects.filter(user=self.request.user).values('post_advert')
         result =  Post.objects.exclude(id__in=public_post)
+        result = result.exclude(id__in=advert_post)
                 
         return result
 
@@ -29,9 +31,11 @@ class CategoryView(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
-
 class PublicPostView(viewsets.ModelViewSet):
     queryset = PublicPost.objects.all()
     serializer_class = PublicPostSerializer
     #http_method_names = ['post',] 
 
+class AdvertisingPostView(viewsets.ModelViewSet):
+    queryset = AdvertisingPost.objects.all()
+    serializer_class = AdvertisingPostSerializer

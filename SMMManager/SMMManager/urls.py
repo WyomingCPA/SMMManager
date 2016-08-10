@@ -2,37 +2,25 @@
 Definition of urls for SMMManager.
 """
 
-
 from django.contrib import admin
 from datetime import datetime
-from django.conf.urls import include
-from django.conf.urls import url
+from django.conf.urls import include, url 
 import django.contrib.auth.views
 
 import app.forms
 import app.views
 
-from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token
-
-from VKApp.api import PostView, CategoryView, PublicPostView
-
-
 
 # Uncomment the next lines to enable the admin:
 # from django.conf.urls import include
 # from django.contrib import admin
 # admin.autodiscover()
 
-router = routers.DefaultRouter()
-router.register(r'GetPost', PostView)
-router.register(r'GetCategory', CategoryView)
-router.register(r'PublicPost', PublicPostView)
-
 urlpatterns = [
     # Examples:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api/', include(router.urls)),
+    url(r'^vk/', include('VKApp.urls')),
     url(r'^api-token-auth/', obtain_jwt_token),
     url(r'^api-token-verify/', verify_jwt_token),    
     url(r'^$', app.views.home, name='home'),
