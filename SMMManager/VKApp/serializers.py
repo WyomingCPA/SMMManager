@@ -1,4 +1,4 @@
-from .models import Post, Category, PublicPost, AdvertisingPost
+from .models import Post, Category, PublicPost, AdvertisingPost, HidePost
 from django.contrib.auth.models import User
 
 from rest_framework import serializers
@@ -20,3 +20,7 @@ class PublicPostSerializer(serializers.ModelSerializer):
 class AdvertisingPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = AdvertisingPost
+
+class HidePostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HidePost

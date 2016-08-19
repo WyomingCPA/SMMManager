@@ -6,9 +6,9 @@ from rest_framework import viewsets, generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from serializers import PostItemSerializer, CategorySerializer, PublicPostSerializer, AdvertisingPostSerializer
+from serializers import PostItemSerializer, CategorySerializer, PublicPostSerializer, AdvertisingPostSerializer, HidePostSerializer
 from datetime import datetime    
-from .models import Post, Category, PublicPost, AdvertisingPost
+from .models import Post, Category, PublicPost, AdvertisingPost, HidePost
 from accounts.models import CustomProfile
 
 
@@ -39,3 +39,7 @@ class PublicPostView(viewsets.ModelViewSet):
 class AdvertisingPostView(viewsets.ModelViewSet):
     queryset = AdvertisingPost.objects.all()
     serializer_class = AdvertisingPostSerializer
+
+class HidePostView(viewsets.ModelViewSet):
+    queryset = HidePost.objects.all()
+    serializer_class = HidePostSerializer

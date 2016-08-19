@@ -37,3 +37,8 @@ class PublicPost(models.Model):
 class AdvertisingPost(models.Model):
     user = models.ForeignKey(User)
     post_advert = models.ForeignKey(Post)
+
+#Модель скрытого поста
+class HidePost(models.Model):
+    user = models.ForeignKey(User)
+    post_advert = models.ForeignKey(Post)
